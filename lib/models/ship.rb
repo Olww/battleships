@@ -3,6 +3,7 @@ class Ship
     @start_coordinate = start_coordinate
     @end_coordinate = end_coordinate
     @length = length
+    @hit_points = length
   end
 
   def self.create_drone_boat(start_coordinate:, end_coordinate:)
@@ -47,9 +48,17 @@ class Ship
     end
   end
 
+  def take_hit
+    @hit_points -= 1
+  end
+
+  def sunk?
+    hit_points.zero?
+  end
+
   private
 
-  attr_reader :start_coordinate, :end_coordinate, :length
+  attr_reader :start_coordinate, :end_coordinate, :length, :hit_points
 
   def end_column
     end_coordinate[1]
