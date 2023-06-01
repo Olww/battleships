@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'lib/models/game'
+require_relative 'lib/models/best_of_three_game'
 require 'pry'
 
-Game.new.start
+BestOfThreeGame.new.start

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../output_helpers/game_interface'
+require_relative 'best_of_three_game'
 
 class GameLoop
   attr_reader :game
@@ -52,7 +53,8 @@ class GameLoop
       when :win
         game_interface.win_status_message(game.current_player.name)
         game.finish_game
-        ask_for_rematch
+        game.current_player.add_score
+        ask_for_rematch unless best_of_3_game?
         break
       end
     end
@@ -66,7 +68,10 @@ class GameLoop
       start_game
     else
       game_interface.goodbye_message
-      exit
     end
+  end
+
+  def best_of_3_game?
+    game.instance_of?(BestOfThreeGame)
   end
 end

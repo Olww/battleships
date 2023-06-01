@@ -9,12 +9,13 @@ require_relative '../services/hint_observer'
 require_relative '../services/board_initializer'
 
 class Player
-  attr_reader :name, :board
+  attr_reader :name, :board, :score
 
   def initialize
     @input_helper = InputHelper.new
     @name = input_helper.get_player_name
     @board = BoardInitializer.new.call
+    @score = 0
   end
 
   def initialize_ship(length)
@@ -31,6 +32,10 @@ class Player
 
   def clear_board!
     @board = BoardInitializer.new.call
+  end
+
+  def add_score
+    @score += 1
   end
 
   private

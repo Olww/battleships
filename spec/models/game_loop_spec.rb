@@ -59,7 +59,6 @@ RSpec.describe GameLoop do
 
     it 'displays a goodbye message and exits if the player declines a rematch' do
       expect(game_interface).to receive(:goodbye_message).once
-      expect(game_loop).to receive(:exit)
       game_loop.send(:ask_for_rematch)
     end
   end

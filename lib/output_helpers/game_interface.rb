@@ -46,7 +46,8 @@ class GameInterface
 
   def win_status_message(player_name)
     clear_screen
-    puts "Player #{player_name} won!"
+    puts "Player #{player_name} won the game!"
+    wait_to_continue
   end
 
   def ask_for_rematch_message
