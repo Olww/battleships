@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe ShipCell do
+RSpec.describe Cell do
   subject(:cell) { described_class.new }
 
   describe '#initialize' do

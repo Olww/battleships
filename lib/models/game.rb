@@ -10,7 +10,6 @@ class Game
   def initialize
     @game_loop = GameLoop.new(game: self)
     @players = []
-    @game_finished = false
   end
 
   def start

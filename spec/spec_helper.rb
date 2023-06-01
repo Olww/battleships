@@ -5,3 +5,5 @@ Dir[File.join(__dir__, '../lib/**/*.rb')].each do |file|
 end
 
 require 'pry'
+require 'stringio'
+require 'singleton'

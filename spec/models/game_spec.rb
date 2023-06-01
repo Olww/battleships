@@ -7,7 +7,6 @@ RSpec.describe Game do
   describe '#initialize' do
     it 'initializes the game' do
       expect(game.players).to eq([])
-      expect(game.game_finished).to eq(false)
     end
   end
 

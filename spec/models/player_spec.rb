@@ -11,7 +11,7 @@ RSpec.describe Player do
 
   describe '#initialize' do
     it 'creates a ship placement handler and places the ship' do
-      expect(InputHelper).to receive(:new).twice.and_return(input_helper)
+      expect(InputHelper).to receive(:new).and_return(input_helper)
       expect(player.name).to eq("Test")
       expect(player.board).to eq(board)
     end

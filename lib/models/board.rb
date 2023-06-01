@@ -9,7 +9,7 @@ class Board
 
   def initialize
     @cells = Array.new(config['dimensions']) { Array.new(config['dimensions']) { Cell.new } }
-    # @board_printer = BoardPrinter.new(board: self)
+    @board_printer = BoardPrinter.new(board: self)
     @ships = []
   end
 
