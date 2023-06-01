@@ -11,7 +11,7 @@ class BoardPrinter
 
   def initialize(board:)
     @board = board
-    @board_dimensions_getter = BoardDimensionsGetter.new
+    @board_dimensions_getter = BoardDimensionsGetter.instance
   end
 
   def print_open

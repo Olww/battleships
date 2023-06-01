@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../output_helpers/game_interface'
-require_relative '../services/board_dimensions_getter'
-
 class InputHelper
-
   def initialize
-    @board_dimensions_getter = BoardDimensionsGetter.new
+    @board_dimensions_getter = BoardDimensionsGetter.instance
   end
+
   def get_player_name
     game_interface.name_entrance_message
     gets.chomp
@@ -32,7 +29,7 @@ class InputHelper
   attr_reader :board_dimensions_getter
 
   def horizontal_coordinates_mapping
-    @horizontal_coordinates_mapping ||= board_dimensions_getter.row_letters_array
+    @horizontal_coordinates_mapping ||= board_dimensions_getter.horizontal_coordinates_mapping
   end
 
   def game_interface

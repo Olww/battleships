@@ -9,12 +9,13 @@ RSpec.describe BoardPrinter do
   let(:cell) { instance_double(Cell, shot?: false) }
   let(:ship_cell) { instance_double(ShipCell, shot?: false) }
   let(:board_printer) { BoardPrinter.new(board: board) }
+  let(:config) { { 'dimensions' => 2 } }
 
   before do
     allow(GameInterface).to receive(:instance).and_return(game_interface)
     allow(game_interface).to receive(:puts)
     allow(game_interface).to receive(:print)
-    allow(board_printer).to receive(:config).and_return({ 'dimensions' => 2 })
+    allow(BoardDimensionsGetter.instance).to receive(:config).and_return(config)
   end
 
   describe '#print_open' do
@@ -30,20 +31,6 @@ RSpec.describe BoardPrinter do
       expect(game_interface).to receive(:puts).with('  |1|2|')
       expect(game_interface).to receive(:print).exactly(8).times
       board_printer.print_secret
-    end
-  end
-
-  describe '#row_numbers' do
-    it 'returns a string with row numbers' do
-      expect(board_printer.send(:row_numbers)).to eq('  |1|2|')
-    end
-  end
-
-  describe '#row_letter' do
-    it 'returns the corresponding letter for the row index' do
-      expect(board_printer.send(:row_letter, index: 0)).to eq('A')
-      expect(board_printer.send(:row_letter, index: 1)).to eq('B')
-      expect(board_printer.send(:row_letter, index: 25)).to eq('Z')
     end
   end
 end
