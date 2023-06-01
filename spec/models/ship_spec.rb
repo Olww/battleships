@@ -8,6 +8,7 @@ RSpec.describe Ship do
       expect(ship.instance_variable_get(:@length)).to eq(3)
       expect(ship.instance_variable_get(:@start_coordinate)).to eq([0, 0])
       expect(ship.instance_variable_get(:@end_coordinate)).to eq([0, 2])
+      expect(ship.instance_variable_get(:@hit_points)).to eq(3)
     end
   end
 
@@ -76,6 +77,34 @@ RSpec.describe Ship do
 
       it 'returns false' do
         expect(ship.valid?).to eq(false)
+      end
+    end
+  end
+
+  describe '#take_hit' do
+    subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 0], end_coordinate: [0, 2]) }
+
+    it 'reduces hit points' do
+      expect { ship.take_hit }.to change { ship.instance_variable_get(:@hit_points) }.by(-1)
+    end
+  end
+
+  describe '#sunk?' do
+    subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 0], end_coordinate: [0, 2]) }
+
+    context 'when the ship is not sunk' do
+      it 'returns false' do
+        expect(ship.sunk?).to eq(false)
+      end
+    end
+
+    context 'when the ship is sunk' do
+      before do
+        3.times { ship.take_hit }
+      end
+
+      it 'returns true' do
+        expect(ship.sunk?).to eq(true)
       end
     end
   end
