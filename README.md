@@ -3,6 +3,10 @@ ruby-3.1.2
 ### Run rspec
 rpsec spec/
 
+### Run game
+
+ruby main.rb
+
 ## Architecture Plan
 
 ### Game Structure
