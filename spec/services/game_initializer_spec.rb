@@ -2,13 +2,20 @@ require 'spec_helper'
 
 RSpec.describe GameInitializer do
   let(:game_interface) { instance_double(GameInterface) }
-  let(:player) { instance_double(Player, name: "Player1") }
+  let(:input_helper) { instance_double(InputHelper, get_player_name: "Test") }
+  let(:board_printer) { instance_double(BoardPrinter, print_open: true) }
+  let(:board) { instance_double(Board, board_printer: board_printer) }
+  let(:player) { instance_double(Player, name: "Player1", board: board) }
   let(:game) { instance_double(Game, add_player: true, players: [player]) }
   let(:config) { {'number_of_players' => 2, 'ships' => [2, 3, 3, 4, 5]} }
 
   before do
     allow(GameInterface).to receive(:instance).and_return(game_interface)
+    allow(InputHelper).to receive(:new).and_return(input_helper)
     allow(game_interface).to receive(:player_creation_message)
+    allow(game_interface).to receive(:player_ship_placement)
+    allow(game_interface).to receive(:wait_to_continue)
+    allow(game_interface).to receive(:name_entrance_message)
     allow(game_interface).to receive(:player_ship_placement)
     allow(player).to receive(:initialize_ship)
     allow(subject).to receive(:config).and_return(config)
