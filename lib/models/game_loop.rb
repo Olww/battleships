@@ -61,7 +61,7 @@ class GameLoop
   def ask_for_rematch
     game_interface.ask_for_rematch_message
     rematch = gets.chomp
-    if rematch == "y"
+    if rematch == 'y'
       game.prepare_new_game
       start_game
     else

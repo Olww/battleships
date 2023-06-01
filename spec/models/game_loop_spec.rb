@@ -3,9 +3,12 @@
 require 'spec_helper'
 
 RSpec.describe GameLoop do
-  let(:game_interface) { instance_double("GameInterface") }
-  let(:game) { instance_double("Game", game_finished: false, change_turn: nil, turn_printer: double(call: nil), current_player: double(make_turn: :coordinate), finish_game: nil, prepare_new_game: nil) }
-  let(:enemy) { instance_double("Player") }
+  let(:game_interface) { instance_double('GameInterface') }
+  let(:game) do
+    instance_double('Game', game_finished: false, change_turn: nil, turn_printer: double(call: nil),
+                            current_player: double(make_turn: :coordinate), finish_game: nil, prepare_new_game: nil)
+  end
+  let(:enemy) { instance_double('Player') }
   let(:game_loop) { GameLoop.new(game: game) }
 
   before do
