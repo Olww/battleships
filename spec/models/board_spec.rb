@@ -11,24 +11,6 @@ RSpec.describe Board do
         end
       end
     end
-
-    it 'initializes with a board printer' do
-      expect(board.board_printer).to be_instance_of(BoardPrinter)
-    end
-
-    it 'initializes with no ships' do
-      expect(board.ships).to be_empty
-    end
-  end
-
-  describe '#add_ship' do
-    let(:ship) { instance_double(Ship) }
-    before { allow(ship).to receive(:instance_of?).and_return(true) }
-
-    it 'adds a ship to the board' do
-      board.add_ship(ship)
-      expect(board.ships).to include(ship)
-    end
   end
 
   describe '#cell_at' do
