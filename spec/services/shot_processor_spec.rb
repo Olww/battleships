@@ -29,6 +29,7 @@ RSpec.describe ShotProcessor do
 
     context 'when the cell is shot' do
       it 'returns :miss' do
+        expect(board).to receive(:update_hint_observer).once
         expect(shot_processor.process).to eq :miss
       end
     end
@@ -37,6 +38,7 @@ RSpec.describe ShotProcessor do
       let(:board) { instance_double(Board, cell_at: ship_cell) }
 
       it 'returns :miss' do
+        expect(board).to receive(:update_hint_observer).once
         expect(shot_processor.process).to eq :hit
       end
     end
@@ -46,6 +48,7 @@ RSpec.describe ShotProcessor do
       let(:ship) { instance_double(Ship, get_coordinates: [[0, 0]], take_hit: true, sunk?: true) }
 
       it 'returns :miss' do
+        expect(board).to receive(:update_hint_observer).once
         expect(shot_processor.process).to eq :sunk
       end
     end

@@ -17,4 +17,8 @@ class BoardDimensionsGetter
   def row_letter(index:)
     (index + 'A'.ord).chr
   end
+
+  def coordinates_to_dimensions(coordinates:)
+    row_letter(index: coordinates[0]) + (coordinates[1] + 1).to_s
+  end
 end

@@ -16,9 +16,11 @@ class ShotProcessor
     if all_ships_sunk?
       :win
     elsif cell_under_attack.instance_of?(Cell)
+      board.update_hint_observer(:miss)
       :miss
     else
       ship_under_attack(coordinates).take_hit
+      board.update_hint_observer(:hit)
       ship_under_attack(coordinates).sunk? ? :sunk : :hit
     end
   end

@@ -21,6 +21,7 @@ RSpec.describe Player do
 
   describe '#initialize_ship' do
     it 'creates a ship placement handler and places the ship' do
+      expect(board).to receive(:add_hint_observer).once
       expect(ship_placement_handler).to receive(:place)
       player.initialize_ship(1)
     end
@@ -28,6 +29,7 @@ RSpec.describe Player do
 
   describe '#make_turn' do
     it 'gets the turn input from the input helper' do
+      expect(board).to receive(:add_hint_observer).once
       expect(input_helper).to receive(:get_turn_input)
       player.make_turn
     end
@@ -36,6 +38,7 @@ RSpec.describe Player do
   describe '#receive_shot' do
     it 'shoots the cell on the board with the given coordinates' do
       expect(board).to receive(:shoot_cell).with(coordinates)
+      expect(board).to receive(:add_hint_observer).once
       player.receive_shot(coordinates)
     end
   end

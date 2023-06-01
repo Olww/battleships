@@ -85,4 +85,8 @@ class GameInterface
     puts 'Press enter to continue.'
     gets
   end
+
+  def hint_message(hint)
+    puts "Hint for the next shot: #{hint}"
+  end
 end

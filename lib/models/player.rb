@@ -5,6 +5,8 @@ require_relative '../output_helpers/board_printer'
 require_relative '../models/board'
 require_relative '../services/ship_placement_handler'
 require_relative '../services/ship_factory'
+require_relative '../services/hint_observer'
+require_relative '../services/board_initializer'
 
 class Player
   attr_reader :name, :board
@@ -12,8 +14,7 @@ class Player
   def initialize
     @input_helper = InputHelper.new
     @name = input_helper.get_player_name
-    # @name = "Test #{rand}"
-    @board = Board.new
+    @board = BoardInitializer.new.call
   end
 
   def initialize_ship(length)
@@ -29,7 +30,7 @@ class Player
   end
 
   def clear_board!
-    @board = Board.new
+    @board = BoardInitializer.new.call
   end
 
   private
