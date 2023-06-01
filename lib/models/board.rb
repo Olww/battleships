@@ -1,5 +1,6 @@
 require_relative 'cell'
 require_relative 'ship_cell'
+require_relative '../output_helpers/board_printer'
 require_relative '../config'
 
 class Board

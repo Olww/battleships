@@ -14,7 +14,7 @@ class Game
 
   def start
     initialize_game_state
-    # start_game_loop
+    start_game_loop
   end
 
   def add_player(player)

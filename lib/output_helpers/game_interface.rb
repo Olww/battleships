@@ -17,7 +17,7 @@ class GameInterface
   end
 
   def ship_placement_error_message
-    puts 'Ship placement is invalid. Please choose a different position.'
+    puts "Ship placement is invalid. Please choose a different position.\n\n"
   end
 
   def name_entrance_message

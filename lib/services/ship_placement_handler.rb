@@ -1,3 +1,4 @@
+require_relative '../services/ship_factory'
 require_relative '../input_helpers/input_helper'
 require_relative '../output_helpers/game_interface'
 
