@@ -1,4 +1,4 @@
 battleship:
   number_of_players: 2
   dimensions: 5
-  ships: [1, 2]
+  ships: [1]
