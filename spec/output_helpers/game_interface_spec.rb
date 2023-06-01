@@ -18,6 +18,20 @@ RSpec.describe GameInterface do
     end
   end
 
+  describe "#player_ship_placement" do
+    it "outputs a message for player ship placement" do
+      game_interface.player_ship_placement("John")
+      expect($stdout.string).to include("Player John has to place ships.")
+    end
+  end
+
+  describe "#ship_placement_message" do
+    it "outputs a message for ship placement" do
+      game_interface.ship_placement_message(4)
+      expect($stdout.string).to include("Place ship length 4.")
+    end
+  end
+
   describe "#puts" do
     it "outputs a message to stdout" do
       game_interface.puts("Hello, world!")
