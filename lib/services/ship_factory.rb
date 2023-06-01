@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../models/ship'
 
 class ShipFactory
@@ -12,7 +14,7 @@ class ShipFactory
     when 4
       Ship.create_destroyer(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
     else
-      raise ArgumentError.new("Invalid ship length: #{length}")
+      raise ArgumentError, "Invalid ship length: #{length}"
     end
   end
 end

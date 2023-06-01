@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'game_interface'
 
 class TurnPrinter
@@ -19,18 +21,18 @@ class TurnPrinter
   end
 
   def print_header
-    game_interface.puts "***************************************"
+    game_interface.puts '***************************************'
     game_interface.puts "* Player #{current_player.name} Turn! *\n\n"
-    game_interface.puts "Press enter when you ready to shoot!"
+    game_interface.puts 'Press enter when you ready to shoot!'
     gets
   end
 
   def print_boards
-    game_interface.puts "********** Your board state ***********"
+    game_interface.puts '********** Your board state ***********'
 
     current_player.board.board_printer.print_open
-    game_interface.puts "***************************************"
-    game_interface.puts "********** Enemy board state **********"
+    game_interface.puts '***************************************'
+    game_interface.puts '********** Enemy board state **********'
 
     current_enemy.board.board_printer.print_secret
 

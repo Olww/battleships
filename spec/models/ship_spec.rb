@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Ship do
@@ -17,28 +19,36 @@ RSpec.describe Ship do
     let(:end_coordinate) { [0, 2] }
 
     context '.create_drone_boat' do
-      subject(:ship) { described_class.create_drone_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate) }
+      subject(:ship) do
+        described_class.create_drone_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
+      end
       it 'creates a drone boat with length 1' do
         expect(ship.instance_variable_get(:@length)).to eq(1)
       end
     end
 
     context '.create_patrol_boat' do
-      subject(:ship) { described_class.create_patrol_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate) }
+      subject(:ship) do
+        described_class.create_patrol_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
+      end
       it 'creates a patrol boat with length 2' do
         expect(ship.instance_variable_get(:@length)).to eq(2)
       end
     end
 
     context '.create_submarine' do
-      subject(:ship) { described_class.create_submarine(start_coordinate: start_coordinate, end_coordinate: end_coordinate) }
+      subject(:ship) do
+        described_class.create_submarine(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
+      end
       it 'creates a submarine with length 3' do
         expect(ship.instance_variable_get(:@length)).to eq(3)
       end
     end
 
     context '.create_destroyer' do
-      subject(:ship) { described_class.create_destroyer(start_coordinate: start_coordinate, end_coordinate: end_coordinate) }
+      subject(:ship) do
+        described_class.create_destroyer(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
+      end
       it 'creates a destroyer with length 4' do
         expect(ship.instance_variable_get(:@length)).to eq(4)
       end

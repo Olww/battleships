@@ -1,5 +1,7 @@
-require_relative '../config'
+# frozen_string_literal: true
+
 require_relative 'game_interface'
+require_relative '../services/board_dimensions_getter'
 
 class BoardPrinter
   SHIP_SYMBOL = 'S'
@@ -7,10 +9,9 @@ class BoardPrinter
   HIT_SHIP_SYMBOL = 'X'
   HIT_WATER_SYMBOL = '•'
 
-  include Config
-
   def initialize(board:)
     @board = board
+    @board_dimensions_getter = BoardDimensionsGetter.new
   end
 
   def print_open
@@ -23,23 +24,23 @@ class BoardPrinter
 
   private
 
-  attr_reader :board
+  attr_reader :board, :board_dimensions_getter
 
   def game_interface
     @game_interface ||= GameInterface.instance
   end
 
   def print_board(secret: false)
-    game_interface.puts row_numbers
+    game_interface.puts board_dimensions_getter.row_numbers
     print_cells(secret: secret)
   end
 
   def print_cells(secret:)
     board.cells.each_with_index do |row, i|
-      game_interface.print "#{row_letter(index: i)} |"
+      game_interface.print "#{board_dimensions_getter.row_letter(index: i)} |"
 
       row.each do |cell|
-        game_interface.print print_cell(cell: cell, secret: secret) + "|"
+        game_interface.print "#{print_cell(cell: cell, secret: secret)}|"
       end
 
       game_interface.print "\n"
@@ -50,17 +51,9 @@ class BoardPrinter
     if cell.shot?
       cell.instance_of?(ShipCell) ? HIT_SHIP_SYMBOL : HIT_WATER_SYMBOL
     elsif secret
-      " "
+      ' '
     else
       cell.instance_of?(ShipCell) ? SHIP_SYMBOL : WATER_SYMBOL
     end
-  end
-
-  def row_numbers
-    "  |" + (1..config['dimensions']).to_a.join('|') + "|"
-  end
-
-  def row_letter(index:)
-    (index + 'A'.ord).chr
   end
 end

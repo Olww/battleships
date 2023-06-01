@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../lib/output_helpers/turn_printer'
 require_relative '../../lib/output_helpers/game_interface'
 require_relative '../../lib/models/player'

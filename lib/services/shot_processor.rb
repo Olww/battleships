@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShotProcessor
   def initialize(board:, coordinates:)
     @board = board
@@ -26,7 +28,7 @@ class ShotProcessor
   attr_reader :board, :coordinates
 
   def all_ships_sunk?
-    board.cells.flatten.select { |cell| cell.instance_of?(ShipCell) }.all? { |cell| cell.shot? }
+    board.cells.flatten.select { |cell| cell.instance_of?(ShipCell) }.all?(&:shot?)
   end
 
   def ship_under_attack(coordinates)

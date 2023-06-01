@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
 module Config
   CONFIG_PATH = 'config/game_config.yaml'
 
   def load_config
-    YAML.load(File.read(CONFIG_PATH))
+    YAML.safe_load(File.read(CONFIG_PATH))
   end
 
   def config

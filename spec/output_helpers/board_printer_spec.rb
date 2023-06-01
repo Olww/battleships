@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe BoardPrinter do
@@ -15,17 +17,17 @@ RSpec.describe BoardPrinter do
     allow(board_printer).to receive(:config).and_return({ 'dimensions' => 2 })
   end
 
-  describe "#print_open" do
-    it "prints an open board" do
-      expect(game_interface).to receive(:puts).with("  |1|2|")
+  describe '#print_open' do
+    it 'prints an open board' do
+      expect(game_interface).to receive(:puts).with('  |1|2|')
       expect(game_interface).to receive(:print).exactly(8).times
       board_printer.print_open
     end
   end
 
-  describe "#print_secret" do
-    it "prints a secret board" do
-      expect(game_interface).to receive(:puts).with("  |1|2|")
+  describe '#print_secret' do
+    it 'prints a secret board' do
+      expect(game_interface).to receive(:puts).with('  |1|2|')
       expect(game_interface).to receive(:print).exactly(8).times
       board_printer.print_secret
     end
@@ -33,7 +35,7 @@ RSpec.describe BoardPrinter do
 
   describe '#row_numbers' do
     it 'returns a string with row numbers' do
-      expect(board_printer.send(:row_numbers)).to eq("  |1|2|")
+      expect(board_printer.send(:row_numbers)).to eq('  |1|2|')
     end
   end
 

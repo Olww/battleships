@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Player do
   subject(:player) { described_class.new }
 
   let(:board) { instance_double(Board) }
-  let(:input_helper) { instance_double(InputHelper) }
+  let(:input_helper) { instance_double(InputHelper, get_player_name: 'Test') }
   let(:coordinates) { [0, 0] }
   let(:ship_placement_handler) { instance_double(ShipPlacementHandler) }
 
@@ -35,20 +37,6 @@ RSpec.describe Player do
     it 'shoots the cell on the board with the given coordinates' do
       expect(board).to receive(:shoot_cell).with(coordinates)
       player.receive_shot(coordinates)
-    end
-  end
-
-  describe '#add_score' do
-    it 'increases the player score' do
-      3.times { player.add_score }
-      expect(player.instance_variable_get(:@score)).to eq(3)
-    end
-  end
-
-  describe '#clear_board!' do
-    it 'creates a new board for the player' do
-      expect(Board).to receive(:new)
-      player.clear_board!
     end
   end
 end

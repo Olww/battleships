@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'player'
 require_relative 'game_loop'
 require_relative '../output_helpers/turn_printer'

@@ -1,6 +1,8 @@
-# make all file visible inside fpr testing
+# frozen_string_literal: true
 
-Dir[File.join(__dir__, '../lib/**/*.rb')].each do |file|
+# make all file visible inside rspec tests
+
+Dir[File.join(__dir__, '../lib/**/*.rb')].sort.each do |file|
   require_relative file
 end
 

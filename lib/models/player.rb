@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../input_helpers/input_helper'
 require_relative '../output_helpers/board_printer'
 require_relative '../models/board'
@@ -31,5 +33,6 @@ class Player
   end
 
   private
+
   attr_reader :input_helper
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'cell'
 require_relative 'ship_cell'
 require_relative '../config'

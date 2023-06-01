@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../output_helpers/game_interface'
 
 class GameLoop
@@ -10,7 +12,6 @@ class GameLoop
   def call
     start_game
     game_interface.goodbye_message
-    exit
   end
 
   private
@@ -20,7 +21,7 @@ class GameLoop
   end
 
   def start_game
-    until game.game_finished do
+    until game.game_finished
       game.change_turn
       make_turn
     end

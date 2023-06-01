@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Ship
   def initialize(length:, start_coordinate:, end_coordinate:)
     @start_coordinate = start_coordinate
