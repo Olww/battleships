@@ -22,6 +22,7 @@ RSpec.describe GameLoop do
   describe '#call' do
     it 'starts the game loop' do
       expect(game).to receive(:change_turn).once
+      expect(game_interface).to receive(:goodbye_message)
       allow(game).to receive(:game_finished).and_return(false, true)
       game_loop.call
     end
@@ -30,6 +31,7 @@ RSpec.describe GameLoop do
   describe '#make_turn' do
     it 'processes a hit' do
       allow(game).to receive(:game_finished).and_return(false, true)
+      expect(game_interface).to receive(:goodbye_message)
       expect(game_interface).to receive(:hit_status_message)
       game_loop.call
     end
