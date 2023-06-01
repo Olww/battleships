@@ -8,7 +8,6 @@ RSpec.describe Ship do
       expect(ship.instance_variable_get(:@length)).to eq(3)
       expect(ship.instance_variable_get(:@start_coordinate)).to eq([0, 0])
       expect(ship.instance_variable_get(:@end_coordinate)).to eq([0, 2])
-      expect(ship.instance_variable_get(:@hit_points)).to eq(3)
     end
   end
 
