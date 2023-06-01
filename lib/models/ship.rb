@@ -31,9 +31,13 @@ class Ship
       length.times do |i|
         cells << [start_row, start_column + i]
       end
-    else
+    elsif vertical?
       length.times do |i|
         cells << [start_row + i, start_column]
+      end
+    elsif diagonal?
+      length.times do |i|
+        cells << [start_row + i, start_column + i]
       end
     end
 
@@ -45,6 +49,8 @@ class Ship
       end_column - start_column + 1 == length
     elsif vertical?
       end_row - start_row + 1 == length
+    elsif diagonal?
+      end_column - start_column + 1 == length && end_row - start_row + 1 == length
     else
       false
     end
@@ -84,5 +90,9 @@ class Ship
 
   def vertical?
     start_column == end_column
+  end
+
+  def diagonal?
+    end_row - start_row == end_column - start_column
   end
 end
