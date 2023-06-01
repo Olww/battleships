@@ -17,7 +17,7 @@ class GameInitializer
       game_interface.player_creation_message(i)
       game.add_player(Player.new)
     end
-    game.shuffle_players
+    shuffle_players
   end
 
   def initialize_ships
@@ -42,6 +42,6 @@ class GameInitializer
   end
 
   def shuffle_players
-    players.shuffle!
+    game.players.shuffle!
   end
 end

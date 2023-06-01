@@ -52,8 +52,21 @@ class GameLoop
       when :win
         game_interface.win_status_message(game.current_player.name)
         game.finish_game
+        ask_for_rematch
         break
       end
+    end
+  end
+
+  def ask_for_rematch
+    game_interface.ask_for_rematch_message
+    rematch = gets.chomp
+    if rematch == "y"
+      game.prepare_new_game
+      start_game
+    else
+      game_interface.goodbye_message
+      exit
     end
   end
 end

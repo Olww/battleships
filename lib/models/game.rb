@@ -43,6 +43,12 @@ class Game
     @game_finished = true
   end
 
+  def prepare_new_game
+    @game_finished = false
+    clear_game_state
+    game_initializer.initialize_ships
+  end
+
   private
 
   def game_initializer
@@ -51,6 +57,10 @@ class Game
 
   def start_game_loop
     game_loop.call
+  end
+
+  def clear_game_state
+    players.each(&:clear_board!)
   end
 
   def initialize_game_state
