@@ -2,7 +2,6 @@ require 'spec_helper'
 
 RSpec.describe GameInitializer do
   let(:game_interface) { instance_double(GameInterface) }
-  let(:input_helper) { instance_double(InputHelper, get_player_name: "Test") }
   let(:board_printer) { instance_double(BoardPrinter, print_open: true) }
   let(:board) { instance_double(Board, board_printer: board_printer) }
   let(:player) { instance_double(Player, name: "Player1", board: board) }
@@ -11,12 +10,9 @@ RSpec.describe GameInitializer do
 
   before do
     allow(GameInterface).to receive(:instance).and_return(game_interface)
-    allow(InputHelper).to receive(:new).and_return(input_helper)
     allow(game_interface).to receive(:player_creation_message)
     allow(game_interface).to receive(:player_ship_placement)
     allow(game_interface).to receive(:wait_to_continue)
-    allow(game_interface).to receive(:name_entrance_message)
-    allow(game_interface).to receive(:player_ship_placement)
     allow(player).to receive(:initialize_ship)
     allow(subject).to receive(:config).and_return(config)
   end
@@ -35,6 +31,7 @@ RSpec.describe GameInitializer do
     it 'places ships for each player' do
       game_initializer.initialize_ships
       expect(game_interface).to have_received(:player_ship_placement).once
+      expect(game_interface).to have_received(:wait_to_continue).once
       expect(player).to have_received(:initialize_ship).exactly(5).times
     end
   end

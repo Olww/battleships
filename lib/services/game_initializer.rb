@@ -1,5 +1,4 @@
 require_relative '../output_helpers/game_interface'
-require_relative '../models/player'
 require_relative '../config'
 
 class GameInitializer

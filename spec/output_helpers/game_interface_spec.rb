@@ -1,3 +1,4 @@
+require 'singleton'
 require 'spec_helper'
 
 RSpec.describe GameInterface do

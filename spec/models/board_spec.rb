@@ -31,6 +31,19 @@ RSpec.describe Board do
     end
   end
 
+  describe '#shoot_cell' do
+    let(:shot_processor) { instance_double(ShotProcessor, process: :hit) }
+
+    before do
+      allow(ShotProcessor).to receive(:new).and_return(shot_processor)
+    end
+
+    it 'processes a shot at the given coordinates' do
+      expect(shot_processor).to receive(:process)
+      board.shoot_cell([0, 0])
+    end
+  end
+
   describe '#cell_at' do
     it 'returns the cell at the given coordinates' do
       cell = board.cell_at([0, 0])

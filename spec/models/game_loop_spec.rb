@@ -15,7 +15,6 @@ RSpec.describe GameLoop do
     allow(game).to receive(:change_turn)
     allow(game).to receive(:turn_printer).and_return(instance_double(TurnPrinter, call: nil))
     allow(game).to receive(:finish_game)
-    allow(game).to receive(:prepare_new_game)
     allow(player1).to receive(:make_turn).and_return(shot)
     allow(player2).to receive(:receive_shot).and_return(:hit)
   end

@@ -1,7 +1,7 @@
 require_relative 'cell'
 require_relative 'ship_cell'
-require_relative '../output_helpers/board_printer'
 require_relative '../config'
+require_relative '../services/shot_processor'
 
 class Board
   attr_reader :cells, :ships, :board_printer
@@ -18,6 +18,10 @@ class Board
     @ships << ship if ship.instance_of?(Ship)
   end
 
+  def shoot_cell(coordinates)
+    process_shot(coordinates)
+  end
+
   def cell_at(coordinates)
     cells[coordinates[0]][coordinates[1]]
   end
@@ -28,5 +32,11 @@ class Board
 
   def cell_occupied?(coordinates)
     cells[coordinates[0]][coordinates[1]].instance_of?(ShipCell)
+  end
+
+  private
+
+  def process_shot(coordinates)
+    ShotProcessor.new(board: self, coordinates: coordinates).process
   end
 end
