@@ -15,6 +15,11 @@ class InputHelper
     { start_coordinate: start_coordinate, end_coordinate: end_coordinate }
   end
 
+  def get_turn_input
+    game_interface.enter_coordinates_message("shot")
+    enter_coordinate
+  end
+
   private
 
   #rewrote this method to be more readable
