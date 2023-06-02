@@ -6,6 +6,5 @@ Dir[File.join(__dir__, '../lib/**/*.rb')].sort.each do |file|
   require_relative file
 end
 
-require 'pry'
 require 'stringio'
 require 'singleton'

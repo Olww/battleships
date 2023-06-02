@@ -6,6 +6,7 @@ class Ship
     @end_coordinate = end_coordinate
     @length = length
     @hit_points = length
+    verify_coordinates_position
   end
 
   def self.create_drone_boat(start_coordinate:, end_coordinate:)
@@ -36,8 +37,14 @@ class Ship
         cells << [start_row + i, start_column]
       end
     elsif diagonal?
-      length.times do |i|
-        cells << [start_row + i, start_column + i]
+      if start_row < end_row
+        length.times do |i|
+          cells << [start_row + i, start_column + i]
+        end
+      else
+        length.times do |i|
+          cells << [start_row - i, start_column + i]
+        end
       end
     end
 
@@ -50,7 +57,7 @@ class Ship
     elsif vertical?
       end_row - start_row + 1 == length
     elsif diagonal?
-      end_column - start_column + 1 == length && end_row - start_row + 1 == length
+      (end_row - start_row).abs + 1 == length && (end_column - start_column).abs + 1 == length
     else
       false
     end
@@ -84,6 +91,13 @@ class Ship
     start_coordinate[0]
   end
 
+  def verify_coordinates_position
+    if start_coordinate[0] <= end_coordinate[0] && start_coordinate[1] <= end_coordinate[1]
+      @start_coordinate = end_coordinate
+      @end_coordinate = start_coordinate
+    end
+  end
+
   def horizontal?
     start_row == end_row
   end
@@ -93,6 +107,6 @@ class Ship
   end
 
   def diagonal?
-    end_row - start_row == end_column - start_column
+    (end_row - start_row).abs == (end_column - start_column).abs
   end
 end

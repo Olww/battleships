@@ -89,5 +89,14 @@ class GameInterface
 
   def hint_message(hint)
     puts "Hint for the next shot: #{hint}"
+    wait_to_continue
+  end
+
+  def best_of_3_finished_message(name)
+    puts "Congratulations, #{name}! You won the best of 3!"
+  end
+
+  def score_message(players)
+    puts "Current score: #{players[0].name} - #{players[0].score} : #{players[1].score} - #{players[1].name}"
   end
 end

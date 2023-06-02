@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BoardInitializer
   def call
     board = Board.new

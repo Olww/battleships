@@ -21,6 +21,7 @@ class TurnPrinter
   end
 
   def print_header
+    game_interface.clear_screen
     game_interface.puts '***************************************'
     game_interface.puts "* Player #{current_player.name} Turn! *\n\n"
     game_interface.puts 'Press enter when you ready to shoot!'

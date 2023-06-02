@@ -38,6 +38,10 @@ class Player
     @score += 1
   end
 
+  def reset_score
+    @score = 0
+  end
+
   private
 
   attr_reader :input_helper

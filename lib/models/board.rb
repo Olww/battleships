@@ -47,11 +47,11 @@ class Board
   private
 
   def alive_ships
-    ships.select { |ship| !ship.sunk? }
+    ships.reject(&:sunk?)
   end
 
   def unshot_alive_ship_cell
-    alive_ships.map(&:get_coordinates).flatten(1).select { |coordinates| !cell_at(coordinates).shot? }.sample
+    alive_ships.map(&:get_coordinates).flatten(1).reject { |coordinates| cell_at(coordinates).shot? }.sample
   end
 
   def process_shot(coordinates)

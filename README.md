@@ -1,72 +1,69 @@
-### Ruby version
-ruby-3.1.2
-### Run rspec
-rpsec spec/
+# Battleship Game
 
-### Run game
+This is a simple terminal-based version of the classic Battleship game implemented in Ruby.
 
+## Ruby Version
+This application is built using Ruby 3.1.2.
+
+## Class Overview
+
+Below are brief explanations of the key classes in this application:
+
+### `Cell`
+A cell on a player's board. It holds state if it was shot or not.
+
+### `Ship`
+A ship that can be placed on the game board. This class also checks if the ship is placed horizontally, vertically, or diagonally.
+
+### `Player`
+A player of the game, which contains a `board` where ships are placed and shots are registered.
+
+### `BoardDimensionsGetter`
+This class is responsible for providing the dimensions of the game board.
+
+### `Board`
+A board is composed of cells and keeps track of where ships are placed and whether they have been hit.
+
+### `GameLoop`
+Controls the main game loop: alternating between player turns, and checking for a win condition.
+
+### `Game`
+The main game class that controls game states and player interactions.
+
+## Game Flow:
+
+1. The `Game` class is used to start the game.
+2. It initializes two players and their boards.
+3. The game then goes into a loop, managed by `GameLoop`, where players take turns shooting at each other's boards.
+4. Each player's move involves choosing a cell to target on the opponent's board.
+5. The `ShotProcessor` processes the shot and determines if it was a hit, miss, or if it sunk a ship.
+6. This continues until all ships of a player have been sunk, at which point the game ends.
+7. Players can then decide whether they want to play again, in which case a new game state is initialized, or end the game.
+
+## Other Classes:
+
+- `GameInitializer`: Used by the `Game` class to initialize the game state.
+- `ShipFactory`: Factory for creating ships of different types.
+- `ShipPlacementHandler`: Responsible for placing a ship on a player's board.
+- `BoardPrinter`, `GameInterface`, `InputHelper`, `TurnPrinter`: Helper classes for handling input/output and printing the state of the game to the console.
+
+
+## Setup Instructions
+
+Ensure that you have the correct Ruby version (3.1.2) installed on your machine. 
+
+### Running the application
+
+You can start the game with the following command:
+
+```bash
 ruby main.rb
+```
 
-## Architecture Plan
+### Running the tests
 
-### Game Structure
+You can run the test suite (RSpec) with the following command:
 
-1. **Game (Singleton)**
-
-    - Main controller class to control the flow of the game
-    - Handles player creation, ship placement, and game loop
-    - Holds game state (current player, game finished status, etc.)
-
-2. **GameInitializer**
-
-    - Class used to set up the initial game state
-    - Handles player creation and ship initialization for each player
-
-3. **GameLoop**
-
-    - Main game loop handler
-    - Manages player turns and checks for win conditions
-
-### Player and Game Board
-
-1. **Player**
-
-    - Represents a game participant
-    - Maintains player-specific information like name, board, and score
-    - Responsible for initializing ships and handling player turns
-
-2. **Board**
-
-    - Represents the game board for a player
-    - Manages a grid of Cell instances and handles shooting at cells, and cell occupancy
-
-3. **Cell**
-
-    - Represents a single cell on the game board
-    - Tracks if a cell has been shot before
-
-### Ship Management
-
-1. **ShipFactory**
-
-    - Factory pattern used to create ships of different lengths
-
-2. **Ship**
-
-    - Represents a ship on the board
-    - Tracks the ship's start/end coordinates, length, and hit points
-    - Can determine if it's sunk based on its hit points
-
-3. **ShipPlacementHandler**
-
-    - Handles the placement of ships on the board during game setup
-
-### Shot Processing
-
-1. **ShotProcessor**
-
-    - Handles the processing of a shot on the game board
-    - Determines if a shot is a hit, miss, sunk a ship, or resulted in a win condition
-
-### Input/Output Handlers
-
+```bash
+rspec spec/
+```

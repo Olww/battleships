@@ -52,8 +52,8 @@ class GameLoop
         break
       when :win
         game_interface.win_status_message(game.current_player.name)
-        game.finish_game
         game.current_player.add_score
+        game.finish_game
         ask_for_rematch unless best_of_3_game?
         break
       end

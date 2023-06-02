@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HintObserver
   def initialize
     @game_interface = GameInterface.instance
@@ -18,7 +20,7 @@ class HintObserver
   attr_reader :board, :before_hint_counter
 
   def give_hint?
-    before_hint_counter == 0
+    before_hint_counter == 2
   end
 
   def give_hint(hint)
