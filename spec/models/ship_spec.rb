@@ -82,8 +82,25 @@ RSpec.describe Ship do
       end
     end
 
+    context 'for a horizontal ship with correct length and reverse position' do
+      subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 2], end_coordinate: [0, 0]) }
+
+      it 'returns true' do
+        expect(ship.valid?).to eq(true)
+      end
+    end
+
     context 'for a diagonal ship with correct length' do
       subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 0], end_coordinate: [2, 2]) }
+
+      it 'returns true' do
+        expect(ship.valid?).to eq(true)
+      end
+    end
+
+
+    context 'for a diagonal ship with correct length and reverse position' do
+      subject(:ship) { described_class.new(length: 3, start_coordinate: [2, 2], end_coordinate: [0, 0]) }
 
       it 'returns true' do
         expect(ship.valid?).to eq(true)
@@ -95,6 +112,14 @@ RSpec.describe Ship do
 
       it 'returns true' do
         expect(ship.valid?).to eq(false)
+      end
+    end
+
+    context 'for a vertical ship with correct length  and reverse position' do
+      subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 2], end_coordinate: [0, 0]) }
+
+      it 'returns false' do
+        expect(ship.valid?).to eq(true)
       end
     end
 
