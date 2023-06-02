@@ -2,6 +2,7 @@
 
 require_relative '../input_helpers/input_helper'
 require_relative '../output_helpers/game_interface'
+require_relative '../models/ship'
 
 class ShipPlacementHandler
   def initialize(board:, length:)
@@ -14,7 +15,7 @@ class ShipPlacementHandler
     loop do
       game_interface.ship_placement_message(length)
       board.board_printer.print_open
-      ship = ShipFactory.build_ship(**ship_params(length))
+      ship = Ship.new(**ship_params(length))
 
       unless ship.valid? && valid_ship_place?(ship)
         game_interface.ship_placement_error_message

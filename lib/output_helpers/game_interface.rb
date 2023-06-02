@@ -98,5 +98,6 @@ class GameInterface
 
   def score_message(players)
     puts "Current score: #{players[0].name} - #{players[0].score} : #{players[1].score} - #{players[1].name}"
+    wait_to_continue
   end
 end

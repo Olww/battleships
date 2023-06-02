@@ -8,7 +8,7 @@ require_relative '../../lib/models/game'
 require_relative '../../lib/output_helpers/board_printer'
 
 RSpec.describe TurnPrinter do
-  let(:game_interface) { instance_double(GameInterface) }
+  let(:game_interface) { instance_double(GameInterface, clear_screen: true) }
   let(:player1) { instance_double(Player, name: 'Player 1', board: board) }
   let(:player2) { instance_double(Player, name: 'Player 2', board: board) }
   let(:board) { instance_double(Board, board_printer: board_printer) }

@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../input_helpers/input_helper'
 require_relative '../output_helpers/board_printer'
 require_relative '../models/board'
 require_relative '../services/ship_placement_handler'
-require_relative '../services/ship_factory'
 require_relative '../services/hint_observer'
 require_relative '../services/board_initializer'
 

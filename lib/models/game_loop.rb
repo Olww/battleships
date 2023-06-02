@@ -12,7 +12,6 @@ class GameLoop
 
   def call
     start_game
-    game_interface.goodbye_message
   end
 
   private

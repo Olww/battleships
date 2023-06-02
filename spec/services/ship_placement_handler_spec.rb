@@ -16,7 +16,7 @@ RSpec.describe ShipPlacementHandler do
   before do
     allow(InputHelper).to receive(:new).and_return(input_helper)
     allow(GameInterface).to receive(:instance).and_return(game_interface)
-    allow(ShipFactory).to receive(:build_ship).and_return(ship)
+    allow(Ship).to receive(:new).and_return(ship)
     allow(game_interface).to receive_messages(ship_placement_message: true, ship_placement_error_message: true,
                                               wait_to_continue: true)
   end

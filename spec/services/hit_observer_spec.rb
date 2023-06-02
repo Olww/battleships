@@ -22,6 +22,8 @@ RSpec.describe HintObserver do
 
           expect(game_interface).to receive(:hint_message).with(transformed_hint)
           hint_observer.update(hint, :miss)
+          hint_observer.update(hint, :miss)
+          hint_observer.update(hint, :miss)
 
           expect(hint_observer.instance_variable_get(:@before_hint_counter)).to eq(0)
         end

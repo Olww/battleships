@@ -14,47 +14,6 @@ RSpec.describe Ship do
     end
   end
 
-  describe 'creation methods' do
-    let(:start_coordinate) { [0, 0] }
-    let(:end_coordinate) { [0, 2] }
-
-    context '.create_drone_boat' do
-      subject(:ship) do
-        described_class.create_drone_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-      end
-      it 'creates a drone boat with length 1' do
-        expect(ship.instance_variable_get(:@length)).to eq(1)
-      end
-    end
-
-    context '.create_patrol_boat' do
-      subject(:ship) do
-        described_class.create_patrol_boat(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-      end
-      it 'creates a patrol boat with length 2' do
-        expect(ship.instance_variable_get(:@length)).to eq(2)
-      end
-    end
-
-    context '.create_submarine' do
-      subject(:ship) do
-        described_class.create_submarine(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-      end
-      it 'creates a submarine with length 3' do
-        expect(ship.instance_variable_get(:@length)).to eq(3)
-      end
-    end
-
-    context '.create_destroyer' do
-      subject(:ship) do
-        described_class.create_destroyer(start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-      end
-      it 'creates a destroyer with length 4' do
-        expect(ship.instance_variable_get(:@length)).to eq(4)
-      end
-    end
-  end
-
   describe '#get_coordinates' do
     context 'for a horizontal ship' do
       subject(:ship) { described_class.new(length: 3, start_coordinate: [0, 0], end_coordinate: [0, 2]) }
@@ -97,7 +56,6 @@ RSpec.describe Ship do
         expect(ship.valid?).to eq(true)
       end
     end
-
 
     context 'for a diagonal ship with correct length and reverse position' do
       subject(:ship) { described_class.new(length: 3, start_coordinate: [2, 2], end_coordinate: [0, 0]) }

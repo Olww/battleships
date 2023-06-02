@@ -9,22 +9,6 @@ class Ship
     verify_coordinates_position
   end
 
-  def self.create_drone_boat(start_coordinate:, end_coordinate:)
-    new(length: 1, start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-  end
-
-  def self.create_patrol_boat(start_coordinate:, end_coordinate:)
-    new(length: 2, start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-  end
-
-  def self.create_submarine(start_coordinate:, end_coordinate:)
-    new(length: 3, start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-  end
-
-  def self.create_destroyer(start_coordinate:, end_coordinate:)
-    new(length: 4, start_coordinate: start_coordinate, end_coordinate: end_coordinate)
-  end
-
   def get_coordinates
     cells = []
 
@@ -92,10 +76,15 @@ class Ship
   end
 
   def verify_coordinates_position
-    if start_coordinate[0] <= end_coordinate[0] && start_coordinate[1] <= end_coordinate[1]
-      @start_coordinate = end_coordinate
-      @end_coordinate = start_coordinate
+    if start_coordinate[0] == end_coordinate[0] && start_coordinate[1] > end_coordinate[1]
+      swap_coordinates
+    elsif start_coordinate[1] == end_coordinate[1] && start_coordinate[0] > end_coordinate[0]
+      swap_coordinates
     end
+  end
+
+  def swap_coordinates
+    @start_coordinate, @end_coordinate= end_coordinate, start_coordinate
   end
 
   def horizontal?
