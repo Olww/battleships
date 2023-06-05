@@ -26,7 +26,6 @@ class HintObserver
   def give_hint(hint)
     transformed_hint = @board_dimensions_getter.coordinates_to_dimensions(coordinates: hint)
     @game_interface.hint_message(transformed_hint)
-    reset_before_hint_counter
   end
 
   def reset_before_hint_counter
