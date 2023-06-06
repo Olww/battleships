@@ -75,16 +75,17 @@ class Ship
     start_coordinate[0]
   end
 
+  # to cover reverse position placement
   def verify_coordinates_position
-    if start_coordinate[0] == end_coordinate[0] && start_coordinate[1] > end_coordinate[1]
+    if start_coordinate[1] > end_coordinate[1] # covers all reverse placement for diagonal and vertical ships
       swap_coordinates
-    elsif start_coordinate[1] == end_coordinate[1] && start_coordinate[0] > end_coordinate[0]
+    elsif start_coordinate[1] == end_coordinate[1] && start_coordinate[0] > end_coordinate[0] # covers all reverse placement for horizontal ships
       swap_coordinates
     end
   end
 
   def swap_coordinates
-    @start_coordinate, @end_coordinate= end_coordinate, start_coordinate
+    @start_coordinate, @end_coordinate = end_coordinate, start_coordinate
   end
 
   def horizontal?
