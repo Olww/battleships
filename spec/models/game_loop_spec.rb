@@ -27,7 +27,7 @@ RSpec.describe GameLoop do
 
   describe '#call' do
     it 'starts the game loop' do
-      expect(game_interface).to receive(:goodbye_message).once
+      expect(game).to receive(:game_finished).once
       game_loop.call
     end
   end

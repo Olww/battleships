@@ -24,6 +24,7 @@ RSpec.describe HintObserver do
           hint_observer.update(hint, :miss)
           hint_observer.update(hint, :miss)
           hint_observer.update(hint, :miss)
+          hint_observer.update(hint, :hit)
 
           expect(hint_observer.instance_variable_get(:@before_hint_counter)).to eq(0)
         end
